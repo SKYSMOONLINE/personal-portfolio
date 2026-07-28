@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-space: "MiSans", "Mi Sans", "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+  --font-display: "Bahnschrift", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-newsreader: "Iowan Old Style", "Times New Roman", Georgia, serif;
+  --paper: 239 239 235;
+  --ink: 12 12 12;
+  --muted: 91 91 88;
+  --line: 70 70 67;
+  --accent: 240 20 10;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: 12 12 12;
+  --ink: 247 247 247;
+  --muted: 156 156 156;
+  --line: 216 216 216;
+  --accent: 255 75 47;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { margin: 0; background: rgb(var(--paper)); color: rgb(var(--ink)); font-family: var(--font-space), Arial, sans-serif; text-rendering: optimizeLegibility; transition: background-color .35s, color .35s; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; }
+::selection { background: rgb(var(--accent)); color: white; }
+
+@layer components {
+  .page-shell { @apply mx-auto w-full px-6 md:px-10 lg:px-[8.66vw]; }
+  .section-shell { @apply flex min-h-screen items-center border-b border-line/30 px-6 py-28 md:px-10 md:py-36 lg:px-[8.66vw] lg:py-44; }
+  .section-kicker { @apply mb-14 flex items-center justify-between border-t border-line/50 pt-4 uppercase tracking-[.14em] text-muted; font-family: "Myriad Pro", Myriad, "Segoe UI", sans-serif; font-size: 13px; }
+  .section-title { @apply text-[clamp(3rem,6.3vw,6rem)] font-normal leading-[.88] tracking-[-.045em]; font-family: var(--font-display); }
+  .hero-title { @apply text-[clamp(3.6rem,9.2vw,10rem)] font-normal leading-[.82] tracking-[-.055em]; font-family: var(--font-display); }
+  .display-slogan { font-family: var(--font-display); }
+  .explore-label { font-family: "Myriad Pro", Myriad, "Segoe UI", sans-serif; font-size: 14px; letter-spacing: .1em; }
+  .micro-label { font-family: "Myriad Pro", Myriad, "Segoe UI", sans-serif; font-size: 14px; letter-spacing: .1em; }
+  .nav-link { @apply relative text-sm uppercase tracking-[.12em] after:absolute after:-bottom-2 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all hover:after:w-full; }
+  .icon-button { @apply grid h-10 w-10 place-items-center rounded-full border border-line/50 transition-colors hover:bg-ink hover:text-paper; }
+  .pill-button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm transition-transform duration-300 hover:-translate-y-0.5; }
+  .tech-tag { @apply border border-line/50 px-3 py-2 uppercase tracking-[.08em] text-muted; font-family: "Myriad Pro", Myriad, "Segoe UI", sans-serif; font-size: 12px; }
+  .project-card { @apply block w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent; }
+}
+
+.crosshair { position: absolute; width: 13px; height: 13px; opacity: .75; }
+.crosshair::before, .crosshair::after { content: ""; position: absolute; background: rgb(var(--line)); }
+.crosshair::before { left: 6px; width: 1px; height: 13px; }
+.crosshair::after { top: 6px; width: 13px; height: 1px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}

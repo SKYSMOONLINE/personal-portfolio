@@ -1,0 +1,166 @@
+.card-nav-container {
+  position: fixed;
+  top: 0.625rem;
+  left: 50%;
+  z-index: 99;
+  width: min(90%, 900px);
+  box-sizing: border-box;
+  transform: translateX(-50%);
+}
+
+.card-nav {
+  position: relative;
+  display: block;
+  height: 60px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 0.9rem;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 16%);
+  will-change: height;
+}
+
+.card-nav-top {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.5rem 0.45rem 1.1rem;
+}
+
+.hamburger-menu {
+  display: flex;
+  width: 42px;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hamburger-menu:hover .hamburger-line { opacity: 0.65; }
+
+.hamburger-line {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: currentColor;
+  transform-origin: 50% 50%;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.hamburger-menu.open .hamburger-line:first-child { transform: translateY(4px) rotate(45deg); }
+.hamburger-menu.open .hamburger-line:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+.logo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  color: #111;
+  text-decoration: none;
+  transform: translate(-50%, -50%);
+}
+
+.card-nav-logo { height: 28px; width: auto; }
+.card-nav-brand { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; }
+
+.card-nav-actions { display: flex; height: 100%; align-items: center; gap: 0.4rem; }
+
+.card-nav-theme-button {
+  display: grid;
+  width: 42px;
+  height: 100%;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgb(0 0 0 / 18%);
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #111;
+  cursor: pointer;
+}
+
+.card-nav-cta-button {
+  display: inline-flex;
+  height: 100%;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0 1.1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.card-nav-cta-button:hover { opacity: 0.84; transform: translateY(-1px); }
+
+.card-nav-content {
+  position: absolute;
+  inset: 60px 0 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 0.5rem;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.card-nav.open .card-nav-content { visibility: visible; pointer-events: auto; }
+
+.nav-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px 17px;
+  border-radius: 0.65rem;
+  user-select: none;
+}
+
+.nav-card-label { font-size: 22px; font-weight: 500; letter-spacing: -0.04em; }
+.nav-card-links { display: flex; flex-direction: column; gap: 4px; margin-top: auto; }
+
+.nav-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+  font-size: 15px;
+  text-decoration: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav-card-link:hover { opacity: 0.7; transform: translateX(2px); }
+
+@media (max-width: 768px) {
+  .card-nav-container { top: 0.4rem; width: calc(100% - 1.5rem); }
+  .card-nav-top { padding: 0.45rem 0.75rem; }
+  .hamburger-menu { order: 2; align-items: flex-end; }
+  .logo-container { position: static; order: 1; transform: none; }
+  .card-nav-cta-button { display: none; }
+  .card-nav-actions { order: 2; }
+  .card-nav-theme-button { height: 42px; }
+  .hamburger-menu { order: 3; }
+  .card-nav-content { flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 7px; }
+  .nav-card { min-height: 104px; flex: 1 1 auto; }
+  .nav-card-label { font-size: 18px; }
+  .nav-card-link { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hamburger-line, .card-nav-cta-button, .nav-card-link { transition-duration: 0.01ms; }
+}
